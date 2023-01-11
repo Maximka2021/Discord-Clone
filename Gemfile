@@ -50,3 +50,7 @@ gem "active_model_serializers", "~> 0.10.12"
 
 gem "faker"
 
+gem 'rails_same_site_cookie', '~> 0.1.8'
+
+gem 'jwt', ' ~> 2.5'
+

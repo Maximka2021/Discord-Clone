@@ -8,9 +8,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  get '/me', to: "users#show"
+  get '/me', to: "users#me"
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
-  post "/login", to: "sessions#create"
+  # post "/login", to: "sessions#create"
   post "/signup", to: "users#create"
-  delete "/logout", to: "sessions#destroy"
+  post "/auth/login", to: "auth#login"
+   delete "/logout", to: "sessions#destroy"
 end

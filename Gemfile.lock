@@ -94,6 +94,7 @@ GEM
     irb (1.6.2)
       reline (>= 0.3.0)
     jsonapi-renderer (0.2.2)
+    jwt (2.6.0)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -146,6 +147,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.4)
       loofah (~> 2.19, >= 2.19.1)
+    rails_same_site_cookie (0.1.9)
+      rack (>= 1.5)
+      user_agent_parser (~> 2.6)
     railties (7.0.4)
       actionpack (= 7.0.4)
       activesupport (= 7.0.4)
@@ -161,6 +165,7 @@ GEM
     timeout (0.3.1)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
+    user_agent_parser (2.13.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -175,9 +180,11 @@ DEPENDENCIES
   bootsnap
   debug
   faker
+  jwt (~> 2.5)
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.4)
+  rails_same_site_cookie (~> 0.1.8)
   sqlite3 (~> 1.4)
   tzinfo-data
 

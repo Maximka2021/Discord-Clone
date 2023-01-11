@@ -1,11 +1,7 @@
-import React from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router";
 
 function LogIn({ setUserData }){
-
-    const link = "http://localhost:3000"
-    const navigate = useNavigate()
 
     const [error, setError] = useState('')
     const [username, setUsername] = useState('')
@@ -14,11 +10,13 @@ function LogIn({ setUserData }){
     const handleUsername = (e) => setUsername(e.target.value)
     const handlePassword = (e) => setPassword(e.target.value)
 
-    function handleSubmit(e){
+    const navigate = useNavigate()
+    
+    function handleLogIn(e){
         e.preventDefault()
-        fetch(`${link}/login`, {
+        fetch('http://localhost:3000/auth/login', {
             method: "POST",
-            headers: {
+            headers:{
                 "Content-Type":"application/json"
             },
             body: JSON.stringify({
@@ -28,9 +26,12 @@ function LogIn({ setUserData }){
         })
         .then(r => r.json())
         .then(data => {
-            if(data.id){
+            console.log(data)
+            if(data.user.id){
                 setError('')
                 setUserData(data)
+                console.log(data)
+                localStorage.setItem('jwt', data.token)
                 navigate('/chat_rooms')
             }else if(data.error){
                 setError(data.error)
@@ -40,8 +41,8 @@ function LogIn({ setUserData }){
 
     return(
         <div>
-            <h1>Log In</h1>
-            <form onSubmit={handleSubmit}>
+            <h1>LogIn</h1>
+            <form onSubmit={handleLogIn}>
                 <input placeholder="username" onChange={handleUsername} />
                 <input placeholder="password" onChange={handlePassword}/>
                 <button type="submit">Log In</button>
