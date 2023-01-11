@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-    skip_before_action :check_user, only: [:index, :create]
+    skip_before_action :check_user, only: [:create, :index, :show]
+
     def index
         render json: User.all
     end
