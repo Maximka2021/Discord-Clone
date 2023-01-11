@@ -7,8 +7,7 @@ import ChatRooms from './ChatRooms';
 
 function App() {
   const token = localStorage.getItem('jwt')
-  const [userData, setUserData] = useState([])
-  console.log(userData)
+  const [userData, setUserData] = useState({})
   useEffect(() => {
     fetch("http://localhost:3000/me", {
       headers:{
@@ -19,8 +18,9 @@ function App() {
       if(r.ok){
         r.json()
         .then(data => {
-          setUserData(data)
           console.log(data)
+          setUserData(data)
+          console.log("me worked")
         })
       }
     })

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 function ChatRooms({ userData, setUserData }){
 
     const [ chatRooms, setChatRooms ] = useState([])
+    const navigate = useNavigate()
 
     useEffect(() => {
         fetch('http://localhost:3000/chat_rooms')
@@ -13,7 +15,7 @@ function ChatRooms({ userData, setUserData }){
     const rooms = chatRooms.map(room => {
         return(
             <div>
-                <h1>{room.title}</h1>
+                <h1 key={room.id}>{room.title}</h1>
             </div>
         )
     })
@@ -21,12 +23,13 @@ function ChatRooms({ userData, setUserData }){
     function handleLogOut(){
         setUserData({})
         localStorage.clear()
+        navigate('/')
     }
-    console.log(userData)
+
     return(
         <div>
             <h1>Chat Rooms</h1>
-            <h2>Welcome {userData.user.username}</h2>
+            <h2>Welcome {userData.username}</h2>
             {rooms}
             <button onClick={handleLogOut}>Log Out</button>
         </div>

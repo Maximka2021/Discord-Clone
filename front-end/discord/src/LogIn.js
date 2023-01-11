@@ -29,8 +29,7 @@ function LogIn({ setUserData }){
             console.log(data)
             if(data.user.id){
                 setError('')
-                setUserData(data)
-                console.log(data)
+                setUserData(data.user)
                 localStorage.setItem('jwt', data.token)
                 navigate('/chat_rooms')
             }else if(data.error){
