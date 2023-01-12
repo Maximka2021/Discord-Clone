@@ -26,26 +26,31 @@ function LogIn({ setUserData }){
         })
         .then(r => r.json())
         .then(data => {
-            console.log(data)
-            if(data.user.id){
+            if(data.error){
+                setError(data.error)
+            }else{
                 setError('')
                 setUserData(data.user)
                 localStorage.setItem('jwt', data.token)
                 navigate('/chat_rooms')
-            }else if(data.error){
-                setError(data.error)
             }
         })
+    }
+
+    function handleNavigate(){
+        navigate("/signup")
     }
 
     return(
         <div>
             <h1>LogIn</h1>
+            <p>{error}</p>
             <form onSubmit={handleLogIn}>
                 <input placeholder="username" onChange={handleUsername} />
                 <input placeholder="password" onChange={handlePassword}/>
                 <button type="submit">Log In</button>
             </form>
+                <button onClick={handleNavigate}>Sign Up Instead</button>
         </div>
     )
 }

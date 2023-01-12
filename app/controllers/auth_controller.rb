@@ -12,7 +12,7 @@ class AuthController < ApplicationController
                 token: @token
             }, status: :accepted
         else
-            render json: {message: 'Incorrect password'}, status: :unauthorized
+            render json: {error: 'Invalid username or password'}, status: :unauthorized
         end
 
     end
@@ -23,7 +23,7 @@ class AuthController < ApplicationController
         params.permit(:username, :password)
     end
 
-    def handle_record_not_found(e)
-        render json: { message: "User doesn't exist" }, status: :unauthorized
+    def handle_record_not_found
+        render json: { error: "User not found" }, status: :unauthorized
     end
 end

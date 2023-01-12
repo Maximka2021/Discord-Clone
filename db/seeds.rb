@@ -42,9 +42,9 @@ puts "Seeding..."
         )
     }
 
-    3.times{
+    10.times{
         Member.create!(
-            user_id: rand(1..6),
+            user_id: rand(1..10),
             chat_room_id: rand(1..3)
         )
     }

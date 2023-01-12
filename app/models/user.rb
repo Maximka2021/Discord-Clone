@@ -5,5 +5,5 @@ class User < ApplicationRecord
       has_many :chat_rooms, through: :members
        # validates :username, presence: true, uniqueness: true, length: {in: 5..20}
        validates :password, presence: true, length: {in: 1..3}
-       validates :email, presence: true, uniqueness: true
+       #validates :email, presence: true, uniqueness: true
 end
