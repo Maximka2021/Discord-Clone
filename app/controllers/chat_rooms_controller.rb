@@ -6,7 +6,7 @@ class ChatRoomsController < ApplicationController
 
     def show
         chat_room = ChatRoom.find_by(id: params[:id])
-        render json: chat_room
+        render json: chat_room, include: ['messages', 'messages.user']
     end
 
 end

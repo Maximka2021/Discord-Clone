@@ -42,15 +42,23 @@ function LogIn({ setUserData }){
     }
 
     return(
-        <div>
-            <h1>LogIn</h1>
-            <p>{error}</p>
-            <form onSubmit={handleLogIn}>
-                <input placeholder="username" onChange={handleUsername} />
-                <input placeholder="password" onChange={handlePassword}/>
-                <button type="submit">Log In</button>
-            </form>
-                <button onClick={handleNavigate}>Sign Up Instead</button>
+        <div className="body">
+            <div className="main">
+                <h1 className="header">Log In</h1>
+                <p>{error}</p>
+                <form onSubmit={handleLogIn}>
+                    <label for="username" className="label" style={{color: "rgb(223, 128, 3)"}}>Username</label>
+                    <br />
+                    <input className="input" onChange={handleUsername} />
+                    <br />
+                    <label for="password" className="label"  style={{color: "rgb(223, 128, 3)"}} >Password</label>
+                    <br />
+                    <input className="input" onChange={handlePassword}/>
+                    <br />
+                    <button type="submit" className="button">Log In</button>
+                </form>
+                    <button onClick={handleNavigate} className="button">Sign Up Instead</button>
+            </div>
         </div>
     )
 }

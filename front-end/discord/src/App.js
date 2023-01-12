@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router';
 import LogIn from './LogIn';
 import ChatRooms from './ChatRooms';
 import SignUp from './SignUp';
+import SearchRooms from './SearchRooms';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             <Route path="/" element={<LogIn setUserData={setUserData}/>} />
             <Route path="/chat_rooms" element={ <ChatRooms userData={userData} setUserData={setUserData} />}/>
             <Route path="/signup" element={<SignUp setUserData={setUserData} />} />
+            <Route path="/search_rooms" element={<SearchRooms userData={userData} />}/>
         </Routes>
     </div>
   );

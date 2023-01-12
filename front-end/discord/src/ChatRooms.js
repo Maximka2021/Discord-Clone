@@ -100,10 +100,14 @@ function ChatRooms({ userData, setUserData }){
             </div>
         )
     })
-        console.log(room)
+
     const messages = room.messages?.map(message => {
         return(
-            <p>{message.body}</p>
+            <div className={message.user.username === userData.username ? "float-left" : "message"}>
+                <p>{message.user.username === userData.username ? "You: " : message.user.username + ": "}</p>
+        
+                <p>{message.body}</p>
+            </div>
         )
     })
 
