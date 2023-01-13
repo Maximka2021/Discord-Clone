@@ -37,7 +37,7 @@ body{
 .body{
     width: 100%;
     height: 100vh;
-    background-color: #002e99;
+    background-color: #495688;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,9 +49,9 @@ body{
     height: 80vh;
     margin: auto;
     border-radius: 37px;
-    background: #002e99;
-    box-shadow:  -35px 35px 35px #001c5d,
-                 35px -35px 35px #0040d5;
+    background: #495688;
+    box-shadow:  -35px 35px 35px #3e476a,
+                 35px -35px 35px #5365af;
 }
 
 .header{
@@ -63,9 +63,9 @@ body{
     margin: 2%;
     border-radius: 15px;
     padding: 15px;
-    background-color: rgb(145, 203, 223);
-    box-shadow: 2px 2px 4px rgb(145, 203, 223),
-                -2px -2px 4px rgb(145, 203, 223);
+    background-color: #3e476a;
+    box-shadow: 2px 2px 4px #5365af,
+                -2px -2px 4px #5365af;
     font-size: medium;
     font-weight: bold;
     max-width: 200px;
@@ -78,14 +78,16 @@ body{
 
    button {
     color: #090909;
+    margin: 2%;
     padding: 0.7em 1.7em;
     font-size: 18px;
     border-radius: 0.5em;
-    background: #e8e8e8;
-    border: 1px solid #e8e8e8;
+    background: #5365af;
+    border: 1px solid #5365af;
     transition: all .3s;
-    box-shadow: 2px 2px 4px #c5c5c5,
-               -2px -2px 4px #ffffff;
+    box-shadow: 2px 2px 4px #5365af,
+               -2px -2px 4px #5365af;
+    cursor: pointer;
   }
   
   button:hover {
@@ -97,3 +99,7 @@ body{
                -4px -4px 12px #ffffff;
   }
 /* LOG IN */
+
+/* CHAT ROOM */
+
+/* CHAT ROOM */

@@ -13,10 +13,9 @@ function ChatRooms({ userData, setUserData }){
     const [guid, setGuid] = useState('')
     
    const [ newMessages, setNewMessages ] = useState([])
-
     const navigate = useNavigate()
     const token = localStorage.getItem('jwt')
- 
+    
     useEffect(() => {
         fetchMessages()
     }, [])
@@ -35,7 +34,7 @@ function ChatRooms({ userData, setUserData }){
             })
         )
     }
-
+    // console.log (room.messages)
     ws.onmessage = (e) => {
         const data = JSON.parse(e.data);
         if (data.type === "ping") return;
@@ -105,9 +104,14 @@ function ChatRooms({ userData, setUserData }){
         return(
             <div className={message.user.username === userData.username ? "float-left" : "message"}>
                 <p>{message.user.username === userData.username ? "You: " : message.user.username + ": "}</p>
-        
                 <p>{message.body}</p>
             </div>
+        )
+    })
+
+    const users = room.users?.map(user => {
+        return(
+            <p>{user.username}</p>
         )
     })
 
@@ -141,7 +145,10 @@ function ChatRooms({ userData, setUserData }){
                 <h1>{room.title}</h1>
                 {messages}
                 <input  placeholder="message" onChange={handleMessage}/>
-                <button onClick={handleSubmit}>Send</button>
+                <button className="send-btn"  onClick={handleSubmit}>Send</button>
+            </div>
+            <div>
+                {users}
             </div>
         </div>
 
