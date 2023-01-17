@@ -10,28 +10,10 @@
 body{
     background-color: grey;
 }
-.show{
-    display: block;
-    background-color: black;
-    height: 80vh;
-    overflow-y: scroll;
-}
 
 .hide{
     display: none;
 }
-
-.message{
-    display: flex;
-    background-color: white;
-}
-
-.float-left{
-    display: flex;
-    background-color: white;
-    padding-left: 30px;
-}
-
 /* LOG IN */
 
 .body{
@@ -82,16 +64,12 @@ body{
     padding: 0.7em 1.7em;
     font-size: 18px;
     border-radius: 0.5em;
-    background: #5365af;
+    background: #3353d2;
     border: 1px solid #5365af;
     transition: all .3s;
-    box-shadow: 2px 2px 4px #5365af,
+    box-shadow: 2px 2px 4px #3b56c4,
                -2px -2px 4px #5365af;
     cursor: pointer;
-  }
-  
-  button:hover {
-    border: 1px solid white;
   }
   
   button:active {
@@ -102,4 +80,184 @@ body{
 
 /* CHAT ROOM */
 
+.main-chat-holder{
+    display: flex;
+    overflow: hidden;
+    background: #495688;
+    height: 100vh;
+    color: rgb(223, 128, 3)
+}
+
+.rooms-list{
+    margin: 2% 12%;
+}
+
+.room-image{
+    border-radius: 50%;
+    width: 7vh;
+}
+
+.room{
+    margin: 3vh;
+    cursor: pointer;
+}
+
+.join-btn{
+    position: absolute;
+    left: 7.5vh;
+    top: 75vh;
+}
+
+.logout-btn{
+    position: absolute;
+    top: 85vh;
+    left: 8.5vh;
+}
+
+.intro-holder{
+    width: 20%;
+}
+
+.chat-holder{
+    background-color:#37488d;
+    display: block;
+    height: 90vh;
+    overflow-y: scroll;
+    width: 60%;
+}
+
+.room-info{
+    width: 60%;
+    height: auto;
+    margin: auto;
+    position: fixed;
+    background-color: #3353d2;
+}
+
+.chat-members-holder{
+    display: flex;
+}
+
+.message{
+    display: flex;
+    background-color: #3b56c4;
+}
+
+.float-left{
+    display: flex;
+    background-color: #37488d;
+    padding-left: 30px;
+    margin: 1vh;
+}
+
+
+.input-btn-holder{
+    width: 60%;
+    position: absolute;
+    top: 90vh;
+    left: 41.5vh;
+    background-color: #090909;
+}
+
+.send-btn{
+    font-family: inherit;
+    font-size: 20px;
+    background: royalblue;
+    color: white;
+    padding: 0.7em 1em;
+    padding-left: 0.9em;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.2s;
+    position: absolute;
+    top: 0vh;
+    left: 80vh;
+}
+
+.send-btn span{
+    display: block;
+    margin-left: 0.3em;
+    transition: all 0.3s ease-in-out;   
+}
+
+.send-btn svg{
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.send-btn:hover .svg-wrapper{
+    animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+.send-btn:hover span{
+    transform: translateX(5em);
+}
+
+.send-btn:hover svg{
+    transform: translateX(1.2em) rotate(45deg) scale(1.1);
+}
+
+.send-btn:active{
+    transform: scale(0.95);
+}
+
+@keyframes fly-1 {
+    from {
+      transform: translateY(0.1em);
+    }
+  
+    to {
+      transform: translateY(-0.1em);
+    }
+  }
+
+.user-holder{
+    width: 20%;
+}
+
+.user-info-holder{
+    width: 100%;
+    margin: 1vh;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.user-image{
+    border-radius: 50%;
+    width: 5vh;
+    margin-right: 1vh;
+}
+
+.chat-holder::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+.chat-holder::-webkit-scrollbar-track {
+    background:#37488d ;        /* color of the tracking area */
+  }
+.chat-holder::-webkit-scrollbar-thumb {
+    background-color: #3353d2;    /* color of the scroll thumb */
+    border-radius: 20px;
+    border: 4px #37488d solid;       /* roundness of the scroll thumb */  /* creates padding around scroll thumb */
+  }
+
 /* CHAT ROOM */
+
+/* SEARCH ROOMS */
+.create-room{
+    display: none;
+    width: 40%;
+    height: 70vh;
+    background-color: green;
+    position: absolute;
+    top: 50%;  
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+/* SEARCH ROOMS */
+

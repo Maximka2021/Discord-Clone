@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router';
+// import SlideRoutes from 'react-slide-routes';
 import LogIn from './LogIn';
 import ChatRooms from './ChatRooms';
 import SignUp from './SignUp';
