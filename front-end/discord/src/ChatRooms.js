@@ -4,12 +4,7 @@ import { useNavigate } from "react-router";
 const ws = new WebSocket("ws://localhost:3000/cable");
 
 function ChatRooms({ userData, setUserData }) {
-  const current = new Date();
-  const date = `${current.getDate()}/${
-    current.getMonth() + 1
-  }/${current.getFullYear()} at ${current.getHours()}:${current.getMinutes()}:${current.getSeconds()}`;
 
-  const [currentTime, setCurrentTime] = useState("");
   const [chatRooms, setChatRooms] = useState([]);
   const [showChat, setShowChat] = useState(false);
   const [message, setMessage] = useState("");
@@ -19,6 +14,9 @@ function ChatRooms({ userData, setUserData }) {
   const [newMessages, setNewMessages] = useState([]);
   const navigate = useNavigate();
   const token = localStorage.getItem("jwt");
+
+  const [ usernameInPopUp, setUsernameInPopUp ] = useState('')
+  const [ displayPopUp, setDisplayPopUp ] = useState(false)
 
   useEffect(() => {
     fetchMessages();
@@ -97,6 +95,11 @@ function ChatRooms({ userData, setUserData }) {
       .then((r) => r.json())
       .then((data) => setRoom(data));
   }
+
+  function handleDisplayPopUp(user){
+    setUsernameInPopUp(user.username)
+  }
+
   const rooms = chatRooms?.map((room) => {
     return (
       <div className="rooms-list">
@@ -112,22 +115,26 @@ function ChatRooms({ userData, setUserData }) {
     return (
       <div
         className={
-          message.user.username === userData.username ? "float-left" : "message"
+          message.user.username === userData.username ? "float-right" : "message"
         }
       >
-        <p>
-          {message.user.username === userData.username
-            ? "You: "
-            : message.user.username + ": "}
-        </p>
-        <p>{message.body}</p>
+          {/* <div className="username-container">
+            <strong className="username">
+              {message.user.username === userData.username
+                ? ""
+                : message.user.username + " "}
+            </strong>
+          </div> */}
+            <div className="message-container">
+              <p className="message-body">{message.body}</p>
+            </div>
       </div>
     );
   });
 
   const users = room.users?.map((user) => {
     return (
-      <div className="user-info-holder">
+      <div className="user-info-holder" onClick={() => handleDisplayPopUp(user)}>
         <img
           className="user-image"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP3lC0SfgqCcTGipFh64hddM6xgBYQj90wOA&usqp=CAU"
@@ -174,6 +181,13 @@ function ChatRooms({ userData, setUserData }) {
           Log Out
         </button>
       </div>
+
+    <div className={displayPopUp ? "user-info-container" : "hide" }>
+      <button onClick={() => setDisplayPopUp(false)}>X</button>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP3lC0SfgqCcTGipFh64hddM6xgBYQj90wOA&usqp=CAU" />
+      <p>{usernameInPopUp}</p>
+      <button>Follow</button>
+    </div>
 
       <div className={showChat ? "chat-holder" : "hide"}>
         <h1 className="room-title">{room.title}</h1>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'friends/index'
+  get 'friends/destroy'
   mount ActionCable.server => "/cable"
   resources :members
   resources :chat_rooms

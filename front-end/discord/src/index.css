@@ -88,6 +88,21 @@ body{
     color: rgb(223, 128, 3)
 }
 
+.user-info-container{
+    display: block;
+    width: 40%;
+    height: 60vh;
+    background-color: green;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%);
+}
+
 .rooms-list{
     margin: 2% 12%;
 }
@@ -138,18 +153,52 @@ body{
     display: flex;
 }
 
+.point{
+    width: 0;
+	height: 0;
+	border-left: 2vh solid transparent;
+	border-right: 2vh solid transparent;
+	border-top: 10vh solid #f9bbb1;
+	position: absolute;
+	top: 45%;
+	right: -10%;
+	transform: rotate(-60deg);
+}
+
+.username{
+    float: left;
+    width: 100%;
+}
+
 .message{
-    display: flex;
-    background-color: #3b56c4;
+    max-width: 30vh;
+    background-color: #3353d2;
+    margin: 2vh 1vh 2vh 15vh;
 }
 
-.float-left{
-    display: flex;
-    background-color: #37488d;
-    padding-left: 30px;
-    margin: 1vh;
+.float-right{
+    background-color: #3353d2;
+    margin: 1vh 1vh 1vh 90vh;
 }
 
+.message-body{
+    float: left;
+    word-break: break-all;
+    /* position: relative; */
+}
+
+.username-container{
+    height: auto;
+    width: 20vh;
+}
+
+.message-container{
+    width: 100%;
+    min-height: 4vw;
+    font-size: 1.5vw;
+    border: 1px black solid;
+    overflow: overlay;
+}
 
 .input-btn-holder{
     width: 60%;
@@ -249,15 +298,80 @@ body{
 /* CHAT ROOM */
 
 /* SEARCH ROOMS */
+
+.search-rooms-main{
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    background-position: fixed;
+    background-attachment: fixed;
+    background-color: #3e476a;
+}
+
+.blur-background{
+    width: 100%;
+    height: 100vh;
+    background-color: #3e476a;
+}
+
 .create-room{
-    display: none;
-    width: 40%;
-    height: 70vh;
-    background-color: green;
     position: absolute;
     top: 50%;  
     left: 50%; 
     transform: translate(-50%, -50%);
+    width: 40%;
+    height: 70vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 37px;
+    background: #495688;
+}
+
+.close-button{
+    text-align: center;
+    position: absolute;
+    border-radius: 50%;
+    top: 0%;
+    left: 85%;
 }
 /* SEARCH ROOMS */
+
+/* NEW ROOMS */
+.room-button-holder{
+    width: 50%;
+    height: 20vh;
+    margin: auto;
+    padding: 1%;
+    border: 5px #3e476a solid;
+    border-radius: 20px;
+    background-color: #37488d;
+}
+
+.join-room-title{
+    float: left;
+    font-size: 2.5rem;
+    margin-top: 4%;
+    margin-left: 10%;
+}
+
+.room-description-holder{
+    width: auto;
+    height: auto;
+}
+
+.room-description{
+    float: left;
+    font-size: 1.5rem;
+    position: relative;
+    top: 30%;
+}
+
+.join-button{
+    float: right;
+    margin-top: 3.5%;
+}
+/* NEW ROOMS */
 
