@@ -59,11 +59,11 @@ function SignUp({ setUserData }) {
           <br />
           <label className="label" for="password" style={{color: "rgb(223, 128, 3)"}}>Password</label>
           <br />
-          <input className="input"  onChange={handlePassword} />
+          <input className="input" type="password"  onChange={handlePassword} />
           <br />
           <label className="label" for="confirm password" style={{color: "rgb(223, 128, 3)"}}>Confirm Password</label>
           <br />
-          <input className="input" onChange={handleConfirmPassword}/>
+          <input className="input" type="password"  onChange={handleConfirmPassword}/>
           <br />
           <button type="submit">Sign Up</button>
         </form>

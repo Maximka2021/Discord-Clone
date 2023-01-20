@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NewRooms from "./NewRooms";
+import { useNavigate } from "react-router";
 
 function SearchRooms({ userData }){
     
@@ -11,6 +12,8 @@ function SearchRooms({ userData }){
     const [ showCreate, setShowCreate ] = useState(false)
 
     const [ filterName, setFilterName] = useState('')
+
+    const navigate = useNavigate()
 
     const userRooms = userData.chat_rooms?.map(room => room.title)
     
@@ -80,6 +83,7 @@ function SearchRooms({ userData }){
                     <button onClick={handleNewRoom} className="create-btn" style={{color: "rgb(223, 128, 3)"}}>Create</button>
                 </div>
             </div>
+            <button className="back-to-chat-rooms-btn" onClick={() => navigate('/chat_rooms')}>Back to Chat Rooms</button>
         </div>
     )
 }

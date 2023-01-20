@@ -67,8 +67,8 @@ body{
     background: #3353d2;
     border: 1px solid #5365af;
     transition: all .3s;
-    box-shadow: 2px 2px 4px #3b56c4,
-               -2px -2px 4px #5365af;
+    /* box-shadow: 2px 2px 4px #3b56c4,
+               -2px -2px 4px #5365af; */
     cursor: pointer;
   }
   
@@ -82,10 +82,102 @@ body{
 
 .main-chat-holder{
     display: flex;
-    overflow: hidden;
-    background: #495688;
+    overflow-x: hidden;
+    position: sticky;
+    top: 0vw;
+    background: rgb(39,39,112);
+    background: linear-gradient(250deg, rgba(39,39,112,1) 0%, rgba(123,129,252,1) 100%);
     height: 100vh;
-    color: rgb(223, 128, 3)
+    color: rgb(223, 128, 3);
+}
+
+.rooms-list{
+    width: 75%;
+    height: 3vw;
+}
+
+.room{
+    background-image: linear-gradient(
+      to right,
+      #54b3d6,
+      #54b3d6 50%,
+      rgb(223, 128, 3) 50%
+    );
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+}
+  
+.room:before{
+    content: '';
+    background: #54b3d6;
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+}
+  
+.room:hover {
+   background-position: 0;
+}
+  
+.room:hover::before{
+    width: 100%;
+}
+  
+
+.room-desc-rules-holder{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 36vw;
+    background-color: #37488d;
+    border-radius: 20px;
+}
+
+.desc-holder{
+    width: 80%;
+    height: 10vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: overlay;
+}
+
+.room-desc{
+    font-size: 1.3vw;
+}
+
+.rules-holder{
+    width: 80%;
+    height: 10vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: overlay;
+}
+
+.room-rules{
+    font-size: 1.3vw;
+}
+
+.close-room-info-btn{
+    border-radius: 50%;
+    position: absolute;
+    top: 0%;
+    left: 83%;
 }
 
 .user-info-container{
@@ -118,15 +210,21 @@ body{
 }
 
 .join-btn{
+    width: 10%;
     position: absolute;
+    background-color: transparent;
+    border: 4px solid #5365af;
     left: 7.5vh;
     top: 75vh;
 }
 
 .logout-btn{
+    width: 10%;
     position: absolute;
+    background-color: transparent;
+    border: 4px solid #5365af;
     top: 85vh;
-    left: 8.5vh;
+    left: 7.5vh;
 }
 
 .intro-holder{
@@ -134,11 +232,29 @@ body{
 }
 
 .chat-holder{
-    background-color:#37488d;
     display: block;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     height: 90vh;
     overflow-y: scroll;
     width: 60%;
+}
+
+.room-title-holder{
+    width: 100%;
+    height: 5vw;
+    background-color: #3353d2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+}
+
+.room-title{
+    position: sticky;
+    font-size: 2.5vw;
+    cursor: pointer;
 }
 
 .room-info{
@@ -171,20 +287,27 @@ body{
 }
 
 .message{
+    padding: 1%;
     max-width: 30vh;
     background-color: #3353d2;
     margin: 2vh 1vh 2vh 15vh;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 .float-right{
+    padding: 1%;
     background-color: #3353d2;
     margin: 1vh 1vh 1vh 90vh;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 
 .message-body{
     float: left;
     word-break: break-all;
-    /* position: relative; */
 }
 
 .username-container{
@@ -196,7 +319,6 @@ body{
     width: 100%;
     min-height: 4vw;
     font-size: 1.5vw;
-    border: 1px black solid;
     overflow: overlay;
 }
 
@@ -204,8 +326,11 @@ body{
     width: 60%;
     position: absolute;
     top: 90vh;
-    left: 41.5vh;
-    background-color: #090909;
+    left: 41.65vh;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 .send-btn{
@@ -287,10 +412,9 @@ body{
     width: 12px;               /* width of the entire scrollbar */
   }
 .chat-holder::-webkit-scrollbar-track {
-    background:#37488d ;        /* color of the tracking area */
+    background: transparent ;        /* color of the tracking area */
   }
 .chat-holder::-webkit-scrollbar-thumb {
-    background-color: #3353d2;    /* color of the scroll thumb */
     border-radius: 20px;
     border: 4px #37488d solid;       /* roundness of the scroll thumb */  /* creates padding around scroll thumb */
   }
@@ -348,6 +472,7 @@ body{
     border: 5px #3e476a solid;
     border-radius: 20px;
     background-color: #37488d;
+    display: flex;
 }
 
 .join-room-title{
@@ -373,5 +498,28 @@ body{
     float: right;
     margin-top: 3.5%;
 }
+
+.room-title-holder-2{
+    width: 80%;
+    height: 7vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.join-button-holder{
+    width: 20%;
+    height: 7vw;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.back-to-chat-rooms-btn{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 /* NEW ROOMS */
 

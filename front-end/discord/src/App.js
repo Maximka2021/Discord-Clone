@@ -6,6 +6,7 @@ import LogIn from './LogIn';
 import ChatRooms from './ChatRooms';
 import SignUp from './SignUp';
 import SearchRooms from './SearchRooms';
+import Loader from './Loader';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
             <Route path="/chat_rooms" element={ <ChatRooms userData={userData} setUserData={setUserData} />}/>
             <Route path="/signup" element={<SignUp setUserData={setUserData} />} />
             <Route path="/search_rooms" element={<SearchRooms userData={userData} />}/>
+            <Route path="/loader" element={<Loader />}/>
         </Routes>
     </div>
   );

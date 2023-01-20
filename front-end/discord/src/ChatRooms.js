@@ -12,11 +12,10 @@ function ChatRooms({ userData, setUserData }) {
   const [guid, setGuid] = useState("");
 
   const [newMessages, setNewMessages] = useState([]);
+  const [showRoomInfo, setShowRoomInfo] = useState(false)
+
   const navigate = useNavigate();
   const token = localStorage.getItem("jwt");
-
-  const [ usernameInPopUp, setUsernameInPopUp ] = useState('')
-  const [ displayPopUp, setDisplayPopUp ] = useState(false)
 
   useEffect(() => {
     fetchMessages();
@@ -51,6 +50,7 @@ function ChatRooms({ userData, setUserData }) {
   };
 
   function handleSubmit() {
+  
     if (message === "" || message === null) {
       alert("Message cannot be blank");
     } else {
@@ -96,10 +96,6 @@ function ChatRooms({ userData, setUserData }) {
       .then((data) => setRoom(data));
   }
 
-  function handleDisplayPopUp(user){
-    setUsernameInPopUp(user.username)
-  }
-
   const rooms = chatRooms?.map((room) => {
     return (
       <div className="rooms-list">
@@ -118,13 +114,13 @@ function ChatRooms({ userData, setUserData }) {
           message.user.username === userData.username ? "float-right" : "message"
         }
       >
-          {/* <div className="username-container">
+          <div className="username-container">
             <strong className="username">
               {message.user.username === userData.username
                 ? ""
                 : message.user.username + " "}
             </strong>
-          </div> */}
+          </div>
             <div className="message-container">
               <p className="message-body">{message.body}</p>
             </div>
@@ -134,7 +130,7 @@ function ChatRooms({ userData, setUserData }) {
 
   const users = room.users?.map((user) => {
     return (
-      <div className="user-info-holder" onClick={() => handleDisplayPopUp(user)}>
+      <div className="user-info-holder">
         <img
           className="user-image"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP3lC0SfgqCcTGipFh64hddM6xgBYQj90wOA&usqp=CAU"
@@ -173,24 +169,36 @@ function ChatRooms({ userData, setUserData }) {
       <div className="intro-holder">
         <h2>Welcome {userData.username}</h2>
         {rooms}
-        <button className="join-btn" onClick={handleToJoin}>
+        <button className="join-btn" onClick={handleToJoin}  style={{color: "rgb(223, 128, 3)"}}>
           {" "}
           Join room
         </button>
-        <button className="logout-btn" onClick={handleLogOut}>
+        <button className="logout-btn" onClick={handleLogOut}  style={{color: "rgb(223, 128, 3)"}}>
           Log Out
         </button>
       </div>
 
-    <div className={displayPopUp ? "user-info-container" : "hide" }>
-      <button onClick={() => setDisplayPopUp(false)}>X</button>
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP3lC0SfgqCcTGipFh64hddM6xgBYQj90wOA&usqp=CAU" />
-      <p>{usernameInPopUp}</p>
-      <button>Follow</button>
-    </div>
+      <div className={showRoomInfo ? "room-desc-rules-holder" : "hide"}>
+            <h1 className="room-title">{room.title}</h1>
+            <div className="desc-holder">
+                <h2>Description:</h2>
+                <br />
+                <p className="room-desc">{room.description}</p>
+            </div>
+
+            <div className="rules-holder">
+              <h2>Rules:</h2>
+              <br />
+                <p className="room-rules">{room.rules}</p>
+            </div>
+
+            <button className="close-room-info-btn" onClick={() => setShowRoomInfo(false)}>X</button>
+      </div>
 
       <div className={showChat ? "chat-holder" : "hide"}>
-        <h1 className="room-title">{room.title}</h1>
+        <div className="room-title-holder">
+          <h1 className="room-title" onClick={() => setShowRoomInfo(true)}>{room.title}</h1>
+        </div>
         {messages}
         <div className="input-btn-holder">
           <input

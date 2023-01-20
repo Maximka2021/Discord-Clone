@@ -32,7 +32,10 @@ function LogIn({ setUserData }){
                 setError('')
                 setUserData(data.user)
                 localStorage.setItem('jwt', data.token)
-                navigate('/chat_rooms')
+                navigate('/loader')
+                setTimeout(() => {
+                    navigate('/chat_rooms')
+                }, 3000)
             }
         })
     }
@@ -53,7 +56,7 @@ function LogIn({ setUserData }){
                     <br />
                     <label for="password" className="label"  style={{color: "rgb(223, 128, 3)"}} >Password</label>
                     <br />
-                    <input className="input" onChange={handlePassword}/>
+                    <input className="input" type="password"  onChange={handlePassword}/>
                     <br />
                     <button type="submit" className="button">Log In</button>
                 </form>
