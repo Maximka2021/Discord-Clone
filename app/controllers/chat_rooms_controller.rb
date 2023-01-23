@@ -20,9 +20,4 @@ class ChatRoomsController < ApplicationController
         params.permit(:title, :description, :rules)
     end
 
-    # def chats
-    #     # chat_room = current_user.chat_rooms
-    #     render json:{message: current_user.chat_rooms}
-    # end
-
 end

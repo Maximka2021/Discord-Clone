@@ -60,8 +60,21 @@ function LogIn({ setUserData }){
                     <br />
                     <button type="submit" className="button">Log In</button>
                 </form>
-                    <button onClick={handleNavigate} className="button">Sign Up Instead</button>
+                    <button onClick={handleNavigate} className="button">Sign Up</button>
             </div>
+
+            <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
         </div>
     )
 }

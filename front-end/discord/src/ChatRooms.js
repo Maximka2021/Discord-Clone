@@ -18,7 +18,9 @@ function ChatRooms({ userData, setUserData }) {
   const token = localStorage.getItem("jwt");
 
   useEffect(() => {
-    fetchMessages();
+    fetch("http://localhost:3000/messages")
+    .then((r) => r.json())
+    .then((data) => setNewMessages(data));
   }, []);
 
   ws.onopen = () => {
@@ -35,7 +37,7 @@ function ChatRooms({ userData, setUserData }) {
       })
     );
   };
-  // console.log (room.messages)
+
   ws.onmessage = (e) => {
     const data = JSON.parse(e.data);
     if (data.type === "ping") return;
@@ -43,14 +45,13 @@ function ChatRooms({ userData, setUserData }) {
     if (data.type === "confirm_subscription") return;
 
     const message = data.message;
-    allMessages([...room.messages, message]);
+    setNewMessages([...room.messages, message]);
     fetch(`http://localhost:3000/chat_rooms/${room.id}`)
       .then((r) => r.json())
       .then((data) => setRoom(data));
   };
 
   function handleSubmit() {
-  
     if (message === "" || message === null) {
       alert("Message cannot be blank");
     } else {
@@ -99,7 +100,6 @@ function ChatRooms({ userData, setUserData }) {
   const rooms = chatRooms?.map((room) => {
     return (
       <div className="rooms-list">
-        {/* <img className="room-image" src="https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-6.png"  /> */}
         <h1 className="room" onClick={() => toRoom(room)} key={room.id}>
           {room.title}
         </h1>
@@ -146,30 +146,12 @@ function ChatRooms({ userData, setUserData }) {
     navigate("/");
   }
 
-  const handleMessage = (e) => {
-    setMessage(e.target.value);
-  };
-
-  const fetchMessages = async () => {
-    fetch("http://localhost:3000/messages")
-      .then((r) => r.json())
-      .then((data) => allMessages(data));
-  };
-
-  function allMessages(data) {
-    setNewMessages(data);
-  }
-
-  function handleToJoin() {
-    navigate("/search_rooms");
-  }
-
   return (
     <div className="main-chat-holder">
       <div className="intro-holder">
         <h2>Welcome {userData.username}</h2>
         {rooms}
-        <button className="join-btn" onClick={handleToJoin}  style={{color: "rgb(223, 128, 3)"}}>
+        <button className="join-btn" onClick={() => navigate("/search_rooms")}  style={{color: "rgb(223, 128, 3)"}}>
           {" "}
           Join room
         </button>
@@ -204,7 +186,7 @@ function ChatRooms({ userData, setUserData }) {
           <input
             className="input"
             placeholder="Message"
-            onChange={handleMessage}
+            onChange={(e) => setMessage(e.target.value)}
           />
           <button className="send-btn" onClick={handleSubmit}>
             <div class="svg-wrapper-1">
