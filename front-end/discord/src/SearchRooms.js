@@ -30,10 +30,11 @@ function SearchRooms({ userData }){
 
     function handleNewRoom(e){
         e.preventDefault()
-        console.log("Hi")
         setShowCreate(false)
         if(roomName === "" || roomName === null){
             alert("Name cannot be empty")
+        }else if(roomName.length > 7){
+            alert("Room name is too long")
         }else{
         fetch('http://localhost:3000/chat_rooms', {
             method: "POST",

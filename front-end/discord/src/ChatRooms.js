@@ -149,8 +149,10 @@ function ChatRooms({ userData, setUserData }) {
   return (
     <div className="main-chat-holder">
       <div className="intro-holder">
-        <h2>Welcome {userData.username}</h2>
-        {rooms}
+        <h2 className="welcome">Welcome {userData.username}</h2>
+        <div className="room-list-holder">
+          {rooms}
+        </div>
         <button className="join-btn" onClick={() => navigate("/search_rooms")}  style={{color: "rgb(223, 128, 3)"}}>
           {" "}
           Join room
