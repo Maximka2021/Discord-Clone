@@ -359,8 +359,7 @@ body{
 .intro-holder{
     width: 20%;
     height: 100vh;
-    /* border: 1px black solid; */
-    background-color: #1d1c55;
+    background-color: #3e476a;
 }
 
 .welcome{
