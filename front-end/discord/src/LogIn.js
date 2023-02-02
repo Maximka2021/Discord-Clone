@@ -47,7 +47,7 @@ function LogIn({ setUserData }){
     return(
         <div className="body">
             <div className="main">
-            <h1 style={{color: "rgb(223, 128, 3)"}}>Welcome to MaxCord</h1>
+            {/* <h1 style={{color: "rgb(223, 128, 3)"}}>Welcome to MaxCord</h1> */}
                 <h1 className="header">Log In</h1>
                 <p>{error}</p>
                 <form onSubmit={handleLogIn}>
