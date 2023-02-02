@@ -8,7 +8,6 @@
 
 puts "Seeding..."
 
-    
         ChatRoom.create!(
             title: "Games",
             description: "About Games",
@@ -46,20 +45,6 @@ puts "Seeding..."
         Member.create!(
             user_id: rand(1..10),
             chat_room_id: rand(1..3)
-        )
-    }
- 
-    5.times{
-        Friend.create!(
-            username: Faker::App.name
-        )
-    }
-
-    5.times{
-        FriendsRequest.create!(
-            user_id: rand(1..10),
-            friend_id: rand(1..5),
-            status: ["accepted", "denied", "pending"].sample
         )
     }
 
