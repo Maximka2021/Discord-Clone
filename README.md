@@ -1,24 +1,41 @@
-# README
+# Discord Clone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Real-time chat application with multiple rooms to join, a search engine, and the ability for you to create your own chats, based on your interests, with your own rules.
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+Cd into a repo you just cloned and if you are using Linux, to start postgeSQL run the following command and enter your password:
 
-* System dependencies
+```
+sudo service postgresql start
+```
+For Mac:
 
-* Configuration
+```
+brew services start postgresql@10
+```
+After you did that run
+```
+rails s
+```
+to start rails server
 
-* Database creation
+Open a new terminal and cd into front-end/discord, from here run
 
-* Database initialization
+```
+npm install
+```
+to install all dependencies and 
+```
+npm start
+```
+to start react app
 
-* How to run the test suite
+## Contributing
 
-* Services (job queues, cache servers, search engines, etc.)
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
 
-* Deployment instructions
+## License
 
-* ...
+Copyright (c) 2023 Maximka2021
